@@ -53,6 +53,8 @@ exporters:
   datadog:
     api:
       key: ${env:DD_API_KEY}
+  prometheus:
+    endpoint: "1.2.3.4:1234"
 
 service:
   pipelines:
@@ -65,7 +67,7 @@ service:
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [datadog]
+      exporters: [prometheus]
 ```
 
 </td><td valign="top">
