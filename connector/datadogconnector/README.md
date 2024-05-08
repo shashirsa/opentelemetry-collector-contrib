@@ -53,6 +53,13 @@ exporters:
   datadog:
     api:
       key: ${env:DD_API_KEY}
+  prometheus:
+    endpoint: "0.0.0.0:1234"
+    tls:
+      ca_file: "/path/to/ca.pem"
+      cert_file: "/path/to/cert.pem"
+      key_file: "/path/to/key.pem"
+    namespace: test-space
 
 service:
   pipelines:
@@ -65,7 +72,7 @@ service:
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [datadog]
+      exporters: [prometheus]
 ```
 
 </td><td valign="top">
